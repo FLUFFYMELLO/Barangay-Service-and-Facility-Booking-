@@ -1,32 +1,19 @@
 body {
     background: linear-gradient(to left, #74daf7, #0072ff);
-    font-family: Arial, Helvetica, sans-serif;
-    
+    font-family: Arial, Helvetica, sans-serif;    margin: 0px;
 }
 
-#Login{
-    background-color:white;
-    position: left; 
-    font-size: 30px;
-    border-right: solid 5px black;
-}
-
-h1{
+/* Login Form Parent*/
+.LoginForm{
+    background-color:white;    font-size: 30px;
+    border-right: solid 5px rgb(122, 122, 122);
+    display: absolute;
+    margin: 0px;
     text-align: center;
-    font-size: 50px;
+    width: 700px;
+    height: 1100px;
 }
 
-#Email{
-    border-radius: 10px;
-    font-size: 20px;
-
-}
-#Password{
-    border-radius: 10px;
-    font-size: 20px;
-}
-
-.labelform{
-    text-align: center;
-    font-size: 21px;
+.LoginForm h1 {
+    margin-top: 0;
 }
