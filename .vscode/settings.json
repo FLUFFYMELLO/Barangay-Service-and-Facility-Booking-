@@ -11,7 +11,7 @@
             "port": 3306,
             "driver": "MySQL",
             "name": "Barangay Database",
-            "database": "userdata",
+            "database": "barangay_database",
             "username": "root"
         }
     ]
