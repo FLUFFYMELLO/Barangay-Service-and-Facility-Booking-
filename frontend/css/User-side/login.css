@@ -1,0 +1,50 @@
+body {
+    background: linear-gradient(to left, #74daf7, #0072ff);
+    font-family: Arial, Helvetica, sans-serif;  
+    margin: 0px;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Center the container on the page
+it needs improvements */
+.login-container{
+    background-color: white;
+    width: 550px;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#logo-placeholder{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    margin-left: 170px;
+    margin-right: 20px;
+}
+
+h1{
+    margin-top: 0px;
+    text-align: center;
+}
+/* Style the input fields, needs improvement*/
+.login-form{
+    display: block;
+    margin: 20px;
+    width: 300px;
+    font-size: 20px;
+}
+
+.button{
+    padding: 5px 60px;
+    background-color: #bbbaba;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+}
+
