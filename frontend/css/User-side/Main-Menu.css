@@ -1,0 +1,112 @@
+body{
+    background: white;
+    font-family: Arial, Helvetica, sans-serif;  
+    margin: 0px;
+    height: 100vh;
+    background-repeat: no-repeat;
+    padding-bottom: 9000px;
+    padding-top: 100px;
+}
+
+/*This is for header CSS*/
+
+
+.header-bar{ /*Color must be changed*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(211, 211, 211);
+    border-style: solid;
+    border-width: 1px;
+    height: 100px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
+
+#left-content{ /*A proper image of the barangay and the title*/
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    width: 350px;
+}
+
+#logo-placeholder{
+    height: 80px;
+    width: 80px;
+    border-radius:100px;
+}
+
+
+#middle-content{ /*A visual improvement on the search box and button*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    margin-left: 90px;
+    margin-right: 70px;
+    max-width: 900px;
+}
+
+#search-box{
+    flex: 1;
+    height: 60px;
+    border-radius: 5px;
+    font-size: 22px;
+    padding-left: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+    width: 0;
+}
+
+#search-box::placeholder{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+}
+
+#search-btn{
+    height: 65px;
+    width: 65px;
+    cursor: pointer;
+}
+
+
+#button-icon{
+    height: 35px;
+}
+
+#right-content{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 20px;
+    flex-shrink: 0;
+    width: 250px;
+}
+
+#settings-btn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+#settings-placeholder{
+    height: 60px;
+    width: 60px;
+    border-radius:100px;
+}
+
+/*Welcome texts*/
+
+.welcome-text{ /*Must be transparent*/
+    display: flex;
+    height: 350px;
+    font-size: 35px;
+    text-align: center;
+    align-items: center;
+    background-color: gray;
+}
