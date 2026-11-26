@@ -4,7 +4,6 @@ body{
     margin: 0px;
     height: 100vh;
     background-repeat: no-repeat;
-    padding-bottom: 9000px;
     padding-top: 100px;
 }
 
@@ -16,7 +15,7 @@ body{
     flex-direction: row;
     justify-content: space-between;
     background-color: rgb(211, 211, 211);
-    border-style: solid;
+    border-bottom-style: solid;
     border-width: 1px;
     height: 100px;
     position: fixed;
@@ -36,7 +35,7 @@ body{
 #logo-placeholder{
     height: 80px;
     width: 80px;
-    border-radius:100px;
+    border-radius: 100px;
 }
 
 
@@ -53,7 +52,8 @@ body{
 #search-box{
     flex: 1;
     height: 60px;
-    border-radius: 5px;
+    border-top-left-radius: 30px; 
+    border-bottom-left-radius:30px;
     font-size: 22px;
     padding-left: 20px;
     border-width: 1px;
@@ -68,9 +68,12 @@ body{
 }
 
 #search-btn{
+    border-top-right-radius: 30px; 
+    border-bottom-right-radius:30px;
     height: 65px;
     width: 65px;
     cursor: pointer;
+    box-shadow: 0 0 0;
 }
 
 
@@ -109,4 +112,38 @@ body{
     text-align: center;
     align-items: center;
     background-color: gray;
+}
+
+.option-containers{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.booking-contents{
+    background-color: lightpink;
+    margin: 0px;
+
+}
+
+.header-container{
+    background-color: green;
+    margin: 0;
+}
+
+
+
+.booking-options{
+    background-color: purple;
+    width: 500px;
+    height: 365px;
+    margin: 0;
+}
+
+#barangay-hall{
+
+}
+
+#none{
+    
 }
