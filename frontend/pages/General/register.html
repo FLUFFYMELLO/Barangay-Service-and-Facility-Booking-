@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Page setup and CSS link -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Barangay Portal</title>
+  <link rel="stylesheet" href="../../css/General/login.css">
+</head>
+<body>
+
+  <!-- Pill navigation bar -->
+  <header class="navbar">
+    <a href="../index.html" class="brand">
+      <span class="brand-icon"></span>
+      <span>Barangay Portal</span>
+    </a>
+    <a href="login.html" class="nav-link">Log In</a>
+  </header>
+
+  <!-- Main content -->
+  <main class="container">
+    <!-- Welcome banner -->
+    <div class="welcome-banner">
+      <h1>Welcome to Barangay Portal!</h1>
+      <p>Create a resident account to start booking facilities and borrowing equipment.</p>
+    </div>
+
+    <!-- Centered register card -->
+    <div class="auth-card centered-card">
+      <h2>Create Account</h2>
+      <p class="card-subtitle">Fill in your details, attach your valid ID, and take a live selfie for verification.</p>
+
+      <!-- Registration form -->
+      <form id="registerForm" action="login.html" method="GET" enctype="multipart/form-data">
+        <label class="field-label" for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Juan Dela Cruz" required>
+
+        <label class="field-label" for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="juan@example.com" required>
+
+        <label class="field-label" for="address">Barangay Address / Purok</label>
+        <input type="text" id="address" name="address" placeholder="Street / Block & Lot" required>
+
+        <!-- Valid ID photo upload -->
+        <label class="field-label" for="validId">1. Valid ID Photo</label>
+        <label class="file-upload-box" for="validId">
+          <input type="file" id="validId" name="validId" accept="image/*" required>
+          <span class="upload-title" id="uploadText">Click to attach a photo of your Valid ID</span>
+          <span class="upload-hint">Accepted: Barangay ID, National ID, Driver's License, or Student ID</span>
+          <img id="idPreview" class="id-preview" alt="ID Preview">
+        </label>
+
+        <!-- Live selfie capture -->
+        <label class="field-label">2. Take a Live Picture (Selfie Verification)</label>
+        <div class="camera-box">
+          <video id="cameraStream" class="camera-feed" autoplay playsinline></video>
+          <canvas id="selfieCanvas" style="display: none;"></canvas>
+          <img id="selfiePreview" class="id-preview" alt="Selfie Preview">
+
+          <p class="upload-hint" id="cameraStatus">Take a clear photo of your face to match your ID.</p>
+
+          <div class="camera-actions">
+            <button type="button" class="btn-outline" id="startCameraBtn">Open Camera</button>
+            <button type="button" class="btn-capture" id="captureBtn" style="display: none;">Capture Photo</button>
+            <button type="button" class="btn-outline" id="retakeBtn" style="display: none;">Retake</button>
+          </div>
+        </div>
+
+        <label class="field-label" for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Create a password" required>
+
+        <button type="submit" class="btn-primary">Register</button>
+      </form>
+
+      <!-- Switch to login -->
+      <p class="switch-text">Already have an account? <a href="login.html">Log in here</a></p>
+    </div>
+  </main>
+
+  <!-- ID preview & live camera script -->
+  <script>
+    // Valid ID file preview
+    const validIdInput = document.getElementById("validId");
+    const idPreview = document.getElementById("idPreview");
+    const uploadText = document.getElementById("uploadText");
+
+    validIdInput.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        uploadText.textContent = file.name;
+        idPreview.src = URL.createObjectURL(file);
+        idPreview.style.display = "block";
+      }
+    });
+
+    // Live camera capture
+    const video = document.getElementById("cameraStream");
+    const canvas = document.getElementById("selfieCanvas");
+    const selfiePreview = document.getElementById("selfiePreview");
+    const cameraStatus = document.getElementById("cameraStatus");
+    const startCameraBtn = document.getElementById("startCameraBtn");
+    const captureBtn = document.getElementById("captureBtn");
+    const retakeBtn = document.getElementById("retakeBtn");
+
+    let stream = null;
+    let selfieTaken = false;
+
+    async function startCamera() {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+        video.srcObject = stream;
+        video.style.display = "block";
+        selfiePreview.style.display = "none";
+        startCameraBtn.style.display = "none";
+        retakeBtn.style.display = "none";
+        captureBtn.style.display = "inline-block";
+        cameraStatus.textContent = "Position your face in the frame and click Capture Photo.";
+      } catch (err) {
+        cameraStatus.textContent = "Camera access denied or unavailable. Please allow camera permissions.";
+      }
+    }
+
+    function stopCamera() {
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+    }
+
+    startCameraBtn.addEventListener("click", startCamera);
+
+    captureBtn.addEventListener("click", function () {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+
+      const ctx = canvas.getContext("2d");
+      // Flip canvas horizontally to match the mirrored selfie view
+      ctx.translate(canvas.width, 0);
+      ctx.scale(-1, 1);
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      selfiePreview.src = canvas.toDataURL("image/png");
+      selfiePreview.style.display = "block";
+      video.style.display = "none";
+      captureBtn.style.display = "none";
+      retakeBtn.style.display = "inline-block";
+      cameraStatus.textContent = "Selfie captured successfully.";
+      selfieTaken = true;
+      stopCamera();
+    });
+
+    retakeBtn.addEventListener("click", function () {
+      selfieTaken = false;
+      startCamera();
+    });
+
+    // Require selfie before submitting
+    document.getElementById("registerForm").addEventListener("submit", function (e) {
+      if (!selfieTaken) {
+        e.preventDefault();
+        alert("Please take a live selfie photo before registering.");
+      }
+    });
+  </script>
+
+</body>
+</html>
