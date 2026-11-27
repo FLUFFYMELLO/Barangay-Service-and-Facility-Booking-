@@ -9,12 +9,17 @@
 </head>
 
 <body>
+    <!-- background animation -->
+     <!-- <div class="container">
+        <div class="bubbles"></div>
+     </div> -->
 
     <!--HEADER-->
     <div class="header-bar">
         <div class="header-contents" id="left-content">
             <div id="logo">
-                <img id="logo-placeholder" src="https://th.bing.com/th/id/OIP.9ThwTpyI3OzYvVlFDG9hZgHaEr?w=248&h=180&c=7&r=0&o=7&pid=1.7&rm=3">
+                <img id="logo-placeholder"
+                    src="https://th.bing.com/th/id/OIP.9ThwTpyI3OzYvVlFDG9hZgHaEr?w=248&h=180&c=7&r=0&o=7&pid=1.7&rm=3">
             </div>
         </div>
 
@@ -27,63 +32,181 @@
 
         <div class="header-contents" id="right-content">
             <button id="settings-btn">
-                <img id="settings-placeholder"src="https://cdn-icons-png.flaticon.com/128/3524/3524659.png">
+                <img id="settings-placeholder" src="https://cdn-icons-png.flaticon.com/128/3524/3524659.png">
             </button>
         </div>
     </div>
 
     <!-- Welcoming -->
     <div class="welcome-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, ad! Nihil aut reiciendis explicabo voluptatibus earum incidunt ipsa odio nemo minima assumenda est, error accusantium, tenetur ipsam fugit consequuntur odit?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, ad! Nihil aut reiciendis explicabo
+        voluptatibus earum incidunt ipsa odio nemo minima assumenda est, error accusantium, tenetur ipsam fugit
+        consequuntur odit?
     </div>
 
     <!-- All the options -->
-     <!--FACILITIES-->
+
     <div class="booking-contents">
+        <!--FACILITIES-->
         <div class="header-container">
-            <h2 id="facilities"><b>FACILITIES</b></h2>
+            <h1 class="option-titles" id="facilities"><b>FACILITIES</b></h1>
         </div>
+
+        <!-- left side -->
         <div class="option-containers">
-            <div class="booking-options" id="barangay-hall">
-                Barangay hall
+            <div class="booking-options left-side" id="barangay-hall">
+                <div class="option-image-container">
+                    <img class="option-image" src="https://tse2.mm.bing.net/th/id/OIP.Mpt5vycFWIKzhCi9MffSEQHaEi?r=0&rs=1&pid=ImgDetMain&o=7&rm=3">
+                </div>
+                <div class="option-title-container">
+                    <h2><b>BARANGAY HALL</b></h2>
+                </div>
+                <div class="option-availability-container">
+                    <p>AVAILABLE: <span>0</span></p>
+                </div>
+                <div class="option-button-container">
+                    <button class="option-btn-viewer">VIEW</button>
+                </div>
             </div>
-            <div class="booking-options" id="basketball-court">
-                Basketball Court
+
+            <!-- Center side -->
+            <div class="booking-options center-side" id="basketball-court">
+                <div class="option-image-container">
+                    <img class="option-image" src="https://cdn-icons-png.flaticon.com/512/14676/14676669.png">
+                </div>
+                <div class="option-title-container">
+                    <h2><b>Basketball Court</b></h2>
+                </div>
+                <div class="option-availability-container">
+                    <p>AVAILABLE: <span>0</span></p>
+                </div>
+                <div class="option-button-container">
+                    <button class="option-btn-viewer">VIEW</button>
+                </div>
             </div>
-            <div class="booking-options" id="none">
-                To be added
+
+            <!-- right side -->
+            <div class="booking-options right-side" id="Multi-Purpose-Hall">
+                <div class="option-image-container">
+                    <img class="option-image" src="data:image/webp;base64,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">
+                </div>
+                <div class="option-title-container">
+                    <h2><b>Multi Purpose Hall</b></h2>
+                </div>
+                <div class="option-availability-container">
+                    <p>AVAILABLE: <span>0</span></p>
+                </div>
+                <div class="option-button-container">
+                    <button class="option-btn-viewer">VIEW</button>
+                </div>
             </div>
         </div>
 
         <!--EQUIPMENT-->
         <div class="header-container">
-            <h2 id="equipments"><b>EQUIPMENTS</b></h2>
+            <h1 class="option-titles"id="equipments"><b>EQUIPMENTS</b></h1>
         </div>
+        <!-- left side -->
         <div class="option-containers">
-            <div class="booking-options" id="barangay-hall">
-                Barangay hall
+            <div class="booking-options left-side" id="Tables">
+                <div class="option-image-container">
+                    <img class="option-image" src="https://tse4.mm.bing.net/th/id/OIP.s6rckFpMk_1RjVu6Zc-SZAHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3">
+                </div>
+                <div class="option-title-container">
+                    <h2><b>Tables</b></h2>
+                </div>
+                <div class="option-availability-container">
+                    <p>AVAILABLE: <span>0</span></p>
+                </div>
+                <div class="option-button-container">
+                    <button class="option-btn-viewer">VIEW</button>
+                </div>
             </div>
-            <div class="booking-options" id="basketball-court">
-                Basketball Court
+
+            <!-- Center side -->
+            <div class="booking-options center-side" id="Chairs">
+                <div class="option-image-container">
+                    <img class="option-image" src="https://tse2.mm.bing.net/th/id/OIP.zyWvfuTSHOSRO3q9tFRzTgAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3">
+                </div>
+                <div class="option-title-container">
+                    <h2><b>Chairs</b></h2>
+                </div>
+                <div class="option-availability-container">
+                    <p>AVAILABLE: <span>0</span></p>
+                </div>
+                <div class="option-button-container">
+                    <button class="option-btn-viewer">VIEW</button>
+                </div>
             </div>
-            <div class="booking-options" id="none">
-                To be added
+
+            <!-- right side -->
+            <div class="booking-options right-side" id="Tents">
+                <div class="option-image-container">
+                    <img class="option-image" src="https://tse2.mm.bing.net/th/id/OIP.KOeYgqdgpsBqvOOH4exZRAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3">
+                </div>
+                <div class="option-title-container">
+                    <h2><b>Tents</b></h2>
+                </div>
+                <div class="option-availability-container">
+                    <p>AVAILABLE: <span>0</span></p>
+                </div>
+                <div class="option-button-container">
+                    <button class="option-btn-viewer">VIEW</button>
+                </div>
             </div>
         </div>
 
         <!--SERVICE-->
         <div class="header-container">
-            <h2 id="services"><b>SERVICE</b></h2>
+            <h1 class="option-titles" id="services"><b>SERVICE</b></h1>
         </div>
+        <!-- left side -->
         <div class="option-containers">
-            <div class="booking-options" id="barangay-hall">
-                Barangay hall
+            <div class="booking-options left-side" id="ID's">
+                <div class="option-image-container">
+                    <img class="option-image" src="https://tse2.mm.bing.net/th/id/OIP.Mpt5vycFWIKzhCi9MffSEQHaEi?r=0&rs=1&pid=ImgDetMain&o=7&rm=3">
+                </div>
+                <div class="option-title-container">
+                    <h2><b>ID's</b></h2>
+                </div>
+                <div class="option-availability-container">
+                    <p>AVAILABLE: <span>0</span></p>
+                </div>
+                <div class="option-button-container">
+                    <button class="option-btn-viewer">VIEW</button>
+                </div>
             </div>
-            <div class="booking-options" id="basketball-court">
-                Basketball Court
+
+            <!-- Center side -->
+            <div class="booking-options center-side" id="Barangay Clearance">
+                <div class="option-image-container">
+                    <img class="option-image" src="https://tse2.mm.bing.net/th/id/OIP.Mpt5vycFWIKzhCi9MffSEQHaEi?r=0&rs=1&pid=ImgDetMain&o=7&rm=3">
+                </div>
+                <div class="option-title-container">
+                    <h2><b>BARANGAY HALL</b></h2>
+                </div>
+                <div class="option-availability-container">
+                    <p>AVAILABLE: <span>0</span></p>
+                </div>
+                <div class="option-button-container">
+                    <button class="option-btn-viewer">VIEW</button>
+                </div>
             </div>
-            <div class="booking-options" id="none">
-                To be added
+
+            <!-- right side -->
+            <div class="booking-options right-side" id="none">
+                <div class="option-image-container">
+                    <img class="option-image" src="https://tse2.mm.bing.net/th/id/OIP.Mpt5vycFWIKzhCi9MffSEQHaEi?r=0&rs=1&pid=ImgDetMain&o=7&rm=3">
+                </div>
+                <div class="option-title-container">
+                    <h2><b>BARANGAY HALL</b></h2>
+                </div>
+                <div class="option-availability-container">
+                    <p>AVAILABLE: <span>0</span></p>
+                </div>
+                <div class="option-button-container">
+                    <button class="option-btn-viewer">VIEW</button>
+                </div>
             </div>
         </div>
     </div>
