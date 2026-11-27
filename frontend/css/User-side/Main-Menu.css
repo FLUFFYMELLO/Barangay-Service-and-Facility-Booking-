@@ -1,10 +1,11 @@
 body{
-    background: white;
+    background: rgb(177, 102, 102);
     font-family: Arial, Helvetica, sans-serif;  
     margin: 0px;
     height: 100vh;
     background-repeat: no-repeat;
     padding-top: 100px;
+    
 }
 
 /*This is for header CSS*/
@@ -114,17 +115,17 @@ body{
     background-color: gray;
 }
 
-.option-containers{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .booking-contents{
-    background-color: lightpink;
     margin: 0px;
-
 }
+
+.option-containers{
+    background-color: cyan;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 100px
+}
+
 
 .header-container{
     background-color: green;
@@ -135,9 +136,10 @@ body{
 
 .booking-options{
     background-color: purple;
-    width: 500px;
-    height: 365px;
+    height: 450px;
     margin: 0;
+    color: rgb(0, 0, 0);
+    border-radius: 50px;
 }
 
 #barangay-hall{
