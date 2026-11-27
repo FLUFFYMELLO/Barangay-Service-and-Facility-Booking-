@@ -116,14 +116,14 @@ body{
 }
 
 .booking-contents{
-    margin: 0px;
+    margin: 60x;
 }
 
 .option-containers{
     background-color: cyan;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 100px
+    column-gap: 80px
 }
 
 
@@ -139,7 +139,7 @@ body{
     height: 450px;
     margin: 0;
     color: rgb(0, 0, 0);
-    border-radius: 50px;
+
 }
 
 #barangay-hall{
