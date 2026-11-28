@@ -43,7 +43,7 @@
         <input type="text" id="address" name="address" placeholder="Street / Block & Lot" required>
 
         <!-- Valid ID photo upload -->
-        <label class="field-label" for="validId">1. Valid ID Photo</label>
+        <span class="field-label">1. Valid ID Photo</span>
         <label class="file-upload-box" for="validId">
           <input type="file" id="validId" name="validId" accept="image/*" required>
           <span class="upload-title" id="uploadText">Click to attach a photo of your Valid ID</span>
@@ -52,7 +52,7 @@
         </label>
 
         <!-- Live selfie capture -->
-        <label class="field-label">2. Take a Live Picture (Selfie Verification)</label>
+        <span class="field-label">2. Take a Live Picture (Selfie Verification)</span>
         <div class="camera-box">
           <video id="cameraStream" class="camera-feed" autoplay playsinline></video>
           <canvas id="selfieCanvas" style="display: none;"></canvas>
@@ -84,12 +84,17 @@
     const validIdInput = document.getElementById("validId");
     const idPreview = document.getElementById("idPreview");
     const uploadText = document.getElementById("uploadText");
+    let currentIdUrl = null;
 
     validIdInput.addEventListener("change", function () {
       const file = this.files[0];
       if (file) {
+        if (currentIdUrl) {
+          URL.revokeObjectURL(currentIdUrl);
+        }
+        currentIdUrl = URL.createObjectURL(file);
         uploadText.textContent = file.name;
-        idPreview.src = URL.createObjectURL(file);
+        idPreview.src = currentIdUrl;
         idPreview.style.display = "block";
       }
     });
@@ -106,7 +111,16 @@
     let stream = null;
     let selfieTaken = false;
 
+    function stopCamera() {
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+        stream = null;
+      }
+      video.srcObject = null;
+    }
+
     async function startCamera() {
+      stopCamera();
       try {
         stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
         video.srcObject = stream;
@@ -121,23 +135,24 @@
       }
     }
 
-    function stopCamera() {
-      if (stream) {
-        stream.getTracks().forEach(track => track.stop());
-      }
-    }
-
     startCameraBtn.addEventListener("click", startCamera);
 
     captureBtn.addEventListener("click", function () {
+      if (!video.videoWidth || !video.videoHeight) {
+        cameraStatus.textContent = "Camera is still loading—please wait a moment and try again.";
+        return;
+      }
+
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
 
       const ctx = canvas.getContext("2d");
+      ctx.save();
       // Flip canvas horizontally to match the mirrored selfie view
       ctx.translate(canvas.width, 0);
       ctx.scale(-1, 1);
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      ctx.restore();
 
       selfiePreview.src = canvas.toDataURL("image/png");
       selfiePreview.style.display = "block";
@@ -154,8 +169,16 @@
       startCamera();
     });
 
-    // Require selfie before submitting
+    window.addEventListener("pagehide", stopCamera);
+
+    // Require valid ID and selfie before submitting
     document.getElementById("registerForm").addEventListener("submit", function (e) {
+      if (!validIdInput.files || validIdInput.files.length === 0) {
+        e.preventDefault();
+        alert("Please attach a photo of your Valid ID before registering.");
+        return;
+      }
+
       if (!selfieTaken) {
         e.preventDefault();
         alert("Please take a live selfie photo before registering.");
